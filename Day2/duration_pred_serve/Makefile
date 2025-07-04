@@ -7,3 +7,9 @@ run:
 .PHONY: predict-test
 predict-test:
 	uv run python integration-tests/predict-test.py
+
+docker_build:
+	docker build -t duration-prediction .
+
+docker_run: docker_build
+	docker run -it -p 9696:9696 duration-prediction:latest
